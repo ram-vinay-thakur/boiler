@@ -2,7 +2,7 @@ import { ApiError } from '../utils/ApiError.js';
 import { User } from '../models/user.model.js';
 import ApiResponse from '../utils/ApiResponse.js';
 import redisClient from '../redis/redisClient.js';
-import cloudinary from '../utils/configCloudinary.js';
+import cloudinary from '../config/configCloudinary.js';
 import sendOtpEmail from '../utils/sendMail.js';
 import crypto from 'crypto';
 import generateCookieOption from '../config/cookieConfig.js';
