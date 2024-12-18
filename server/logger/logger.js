@@ -13,7 +13,6 @@ const logger = winston.createLogger({
     logFormat
   ),
   transports: [
-    // Console transport with colorized output
     new winston.transports.Console({
       format: winston.format.combine(
         winston.format.colorize(),

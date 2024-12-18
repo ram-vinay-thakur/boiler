@@ -193,6 +193,6 @@ const logoutUser = async (req, res) => {
         console.error(error);
         return res.status(500).json(new ApiError(500, "Error Logging out!"));
     }
-}
+};
 
 export { registerUser, checkUsername, returnUser, loginUser, logoutUser, verifyOtp };

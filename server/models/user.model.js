@@ -1,6 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+import config from "../config/config.js";
 
 const userSchema = new Schema({
     username: {
@@ -104,14 +105,11 @@ const userSchema = new Schema({
 
 userSchema.pre("save", async function (next) {
     if (!this.isModified("password")) return next();
-    this.password = await bcrypt.hash(this.password, 12);
+    this.password = bcrypt.hash(this.password, Number(config.BCRYPT_SALT_ROUNDS));
     next();
 });
 
 userSchema.methods.isPasswordCorrect = async function (password) {
-    console.log(password
-        , this.password
-    )
     if (!password || !this.password) {
         throw new Error("Password or hash is missing.");
     }
@@ -144,4 +142,5 @@ userSchema.methods.generateRefreshToken = function () {
         },
     );
 };
+
 export const User = mongoose.model("User", userSchema);

@@ -15,6 +15,8 @@ const config = {
         SERVICE_UNAVAILABLE: 503
     },
 
+    BCRYPT_SALT_ROUNDS: 10,
+
 };
 
 export default config;
